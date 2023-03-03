@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function buyCar(cb1,cb2,cb3){
+                setTimeout(()=>{
+                    console.log('buy a car');
+                    cb1(cb2,cb3);
+                },5000);
+            }
+            function planTrip(cb1,cb2){
+                setTimeout(() => {
+                    console.log('lets go to manali');
+                    cb1(cb2);
+                }, 2000);
+            }
+            function reachedMnali(cb){
+                setTimeout(() => {
+                    console.log('reached manali');
+                    cb();
+                }, 1000);
+            }
+            function letsgotofamousmountain(){
+                setTimeout(() => {
+                    console.log('lets go to famous mountain');
+                }, 1000);
+            }
+            //buyCar(planTrip(reachedMnali)); //error because planTrip gets printed,reachedMnali gets printed then buycar fnction does not get anything to printed because those two functions does not return anything
+            //In order to solve this issue pass 2 functions as a 2 arguments
+            buyCar(planTrip,reachedMnali,letsgotofamousmountain); //code look messier(unreadable) its difficult to undestand ho the callback functions called inside another function this is the reason promises invneted
+        </script>
+    </body>
+</html>

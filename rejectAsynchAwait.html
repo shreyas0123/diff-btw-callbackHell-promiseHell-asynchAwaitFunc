@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function buyCar(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                    resolve('buy a car');
+                },5000);
+                });
+                
+            }
+            function planTrip(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    resolve('lets go to manali');
+                }, 2000);
+                });
+
+            }
+            function reachedMnali(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    resolve('reached manali');
+                }, 1000);
+                })
+
+            }
+            function letsgotofamousmountain(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    reject('Error:Some accident happend'); //in mountain some accident happened this is where error handling comes into picture
+                }, 1000);
+                })
+
+            }
+            async function fun1(){
+            try{ //error handliing can be done by using try catch method
+            const msg = await buyCar(); //if i didnt use await function then it will through an error like await can use only inside asynch function not with like setTiomeout() functions etc.
+            console.log(msg);
+            const msg2 = await planTrip();
+            console.log(msg2);
+            const msg3 = await reachedMnali();
+            console.log(msg3);
+            const msg4 = await letsgotofamousmountain();
+            console.log(msg4);
+            } catch(err){
+                console.log(err);
+            }
+
+            }
+            fun1();
+
+
+            
+        </script>
+    </body>
+</html>

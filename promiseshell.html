@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function buyCar(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                    resolve('buy a car');
+                },5000);
+                });
+                
+            }
+            function planTrip(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    resolve('lets go to manali');
+                }, 2000);
+                });
+
+            }
+            function reachedMnali(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    resolve('reached manali');
+                }, 1000);
+                })
+
+            }
+            function letsgotofamousmountain(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                    console.log('lets go to famous mountain');
+                }, 1000);
+                })
+
+            }
+            buyCar().then((msg)=>{ //in msg whatever we write inside resolve or reject it will come here,code looks ugly
+                console.log(msg);
+                planTrip().then((msg2)=>{
+                    console.log(msg2);
+                    reachedMnali().then((msg3)=>{
+                        console.log(msg3);
+                        letsgotofamousmountain().then((msg4)=>{
+                            console.log(msg4); //code looks messier its also creates something like promises hell.beacuse of so many .then()
+
+                        })
+                    })
+                })
+            })
+        </script>
+    </body>
+</html>
